@@ -1,0 +1,70 @@
+<div class="m-4">
+  <h1>Usuario <small>Formulario del usuario</small></h1>
+  <hr />
+
+  <div class="row">
+    <div class="col d-flex justify-content-start">
+      <button class="btn btn-warning" routerLink="/users">
+        <i class="fas fa-arrow-left"></i>Regresar
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <form #userForm="ngForm" (ngSubmit)="saveUser(userForm)">
+        <div class="form-group">
+          <label>Firebase ID</label>
+          <input
+            type="text"
+            placeholder="Firebase ID"
+            class="form-control"
+            [(ngModel)]="user.id"
+            name="id"
+            disabled
+          />
+        </div>
+        <div class="form-group">
+          <label>Name</label>
+          <input
+            type="text"
+            placeholder="Name"
+            class="form-control"
+            [(ngModel)]="user.name"
+            name="name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Lastname</label>
+          <input
+            type="text"
+            placeholder="Lastname"
+            class="form-control"
+            [(ngModel)]="user.lastName"
+            name="lastname"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            placeholder="Email"
+            class="form-control"
+            [(ngModel)]="user.email"
+            name="email"
+            required
+          />
+        </div>
+        <hr />
+        <div class="form-group text-center">
+          <button class="btn btn-primary w-50" type="submit">
+            <i class="fas fa-save"></i>
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

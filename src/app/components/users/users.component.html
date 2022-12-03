@@ -1,0 +1,53 @@
+<div class="m-4">
+  <h1>Listado de usuarios en Firebase</h1>
+  <hr />
+  <div class="row">
+    <div class="col d-flex justify-content-end">
+      <button class="btn btn-primary" routerLink="/user/new">
+        <i class="fas fa-plus"></i>
+        Agregar
+      </button>
+    </div>
+  </div>
+  <table class="table" *ngIf="users.length > 0 && !isLoading">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Lastname</th>
+        <th scope="col">Email</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ user.name }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button class="btn btn-info" [routerLink]="['/user', user.id]">
+            <i class="fa fa-pen"></i>
+          </button>
+          <button class="btn btn-danger" (click)="deleteUser(user, i)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div
+    class="alert alert-warning text-center mt-3"
+    *ngIf="!isLoading && users.length === 0"
+  >
+    <h4 class="alert-heading">No hay registros</h4>
+    <p><i class="fa fa-exclamation fa-2x"></i></p>
+  </div>
+
+  <div class="alert alert-info text-center mt-3" *ngIf="isLoading">
+    <h4 class="alert-heading">Cargando</h4>
+    <p><i class="fa fa-sync-alt fa-spin fa-2x"></i></p>
+    <p class="mb-0">Espere un momento por favor.</p>
+  </div>
+</div>
